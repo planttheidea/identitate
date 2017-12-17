@@ -17,6 +17,8 @@ const identityNested = src.createIdentity(0, 'some[1].nested');
 
 console.log('FIRST NESTED', identityNested({some: ['deeply', {nested: 'value'}]}, {some: {other: 'object value'}}));
 
+console.log(src.createIdentity(0, '"[some.fake.key]"')({'[some.fake.key]': 'value'}));
+
 class App extends PureComponent {
   element = null;
 

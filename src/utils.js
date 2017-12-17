@@ -1,39 +1,17 @@
 /**
- * @constant {RegExp} QUOTED_KEY_REGEXP
+ * @constant {RegExp} QUOTES_REGEXP
  */
-export const QUOTED_KEY_REGEXP = /['|"|`]/;
+export const QUOTES_REGEXP = /['|"|`]/;
 
 /**
- * @function getKey
- *
- * @description
- * get the key as a number if parseable
- *
- * @param {string} key the key to try to parse
- * @returns {number|string} the parsed key
+ * @constant {RegExp} QUOTES_GLOBAL_REGEXP
  */
-export const getKey = (key) => {
-  return `${+key}` === key ? +key : key;
-};
+export const QUOTES_GLOBAL_REGEXP = new RegExp(`${QUOTES_REGEXP}`.slice(1, -1), 'g');
 
 /**
- * @function getDotSeparatedPath
- *
- * @description
- * get the path separated by periods as an array of strings or numbers
- *
- * @param {string} path the string path to parse
- * @returns {Array<number|string>} the parsed string path as an array path
+ * @constant {RegExp} DOTTY_WITH_BRACKETS_SYNTAX_REGEXP
  */
-export const getDotSeparatedPath = (path) => {
-  return path.split('.').reduce((splitPath, pathItem) => {
-    if (pathItem) {
-      splitPath.push(getKey(pathItem));
-    }
-
-    return splitPath;
-  }, []);
-};
+export const DOTTY_WITH_BRACKETS_SYNTAX_REGEXP = /\w+|"[^"]+"/g;
 
 /**
  * @function isQuotedKey
@@ -45,7 +23,20 @@ export const getDotSeparatedPath = (path) => {
  * @returns {boolean} is the key a quoted key
  */
 export const isQuotedKey = (key) => {
-  return QUOTED_KEY_REGEXP.test(key[0]) && key[0] === key[key.length - 1];
+  return QUOTES_REGEXP.test(key[0]) && key[0] === key[key.length - 1];
+};
+
+/**
+ * @function getKey
+ *
+ * @description
+ * get the key as a number if parseable
+ *
+ * @param {string} key the key to try to parse
+ * @returns {number|string} the parsed key
+ */
+export const getKey = (key) => {
+  return isQuotedKey(key) ? key.slice(1, -1) : isNaN(+key) ? key : +key;
 };
 
 /**
@@ -83,17 +74,12 @@ export const getPath = (path) => {
   }
 
   if (typeof path === 'string') {
-    return path.split(/\[(.*?)\]/g).reduce((cleanPath, pathItem) => {
-      if (pathItem) {
-        if (!isQuotedKey(pathItem)) {
-          return cleanPath.concat(getDotSeparatedPath(pathItem));
-        }
-
-        cleanPath.push(getKey(pathItem.slice(1, -1)));
-      }
-
-      return cleanPath;
-    }, []);
+    return path
+      ? path
+        .replace(QUOTES_GLOBAL_REGEXP, '"')
+        .match(DOTTY_WITH_BRACKETS_SYNTAX_REGEXP)
+        .map(getKey)
+      : [];
   }
 
   return [path];

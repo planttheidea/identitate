@@ -20,14 +20,6 @@ test('if getKey will return the key as a number when it is a number string', (t)
   t.is(result, parseInt(key, 10));
 });
 
-test('if getDotSeparatedPath wil return the path split by dots', (t) => {
-  const path = 'foo.0..bar';
-
-  const result = utils.getDotSeparatedPath(path);
-
-  t.deepEqual(result, ['foo', 0, 'bar']);
-});
-
 test('if isQuotedKey will return true when quoted', (t) => {
   const key = '"some.quoted.key"';
 
@@ -142,13 +134,21 @@ test('if getPath will handle when the path has nested quoted strings, it will re
 
   t.deepEqual(simplePath, ['foo.bar']);
 
-  const complex = 'foo[`bar.baz`]';
+  const complex = '["foo"][`bar.baz`][\'quz\']';
   const complexPath = utils.getPath(complex);
 
-  t.deepEqual(complexPath, ['foo', 'bar.baz']);
+  t.deepEqual(complexPath, ['foo', 'bar.baz', 'quz']);
 
   const crazy = 'foo[\'bar.baz\'].blah[0]["super.blah"]';
   const crazyPath = utils.getPath(crazy);
 
   t.deepEqual(crazyPath, ['foo', 'bar.baz', 'blah', 0, 'super.blah']);
+});
+
+test('if getPath will handle when the path is an empty string', (t) => {
+  const path = '';
+
+  const result = utils.getPath(path);
+
+  t.deepEqual(result, []);
 });
