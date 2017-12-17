@@ -110,6 +110,12 @@ const identityNested = createIdentity(0, 'deeply.nested');
 console.log(identityNested({deeply: {nested: 'value'}})); // 'value'
 ```
 
+The `path` handles standard dotty syntax, with support for brackets and quoted keys:
+
+* `simple.object.nesting`
+* `nesting[0].with[2].arrays`
+* `nesting.with["quoted keys"]`
+
 ## Browser support
 
 * Chrome (all versions)
