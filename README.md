@@ -2,6 +2,19 @@
 
 A tiny custom identity function creator for composable softwares.
 
+## Table of contents
+
+* [Usage](#usage)
+* [Pre-build methods](#pre-build-methods)
+  * [identity](#identity)
+  * [identitySecond](#identitysecond)
+  * [identityLast](#identitylast)
+  * [identitySecondLast](#identitysecondlast)
+* [Custom methods](#custom-methods)
+  * [createIdentity](#createidentity)
+* [Browser support](#browser-support)
+* [Development](#development)
+
 ## Usage
 
 ```javascript
@@ -78,7 +91,7 @@ console.log(identityLast('first', 'second', 'third')); // 'second'
 
 _creates a new identity method based on the parameters passed_
 
-`createIdentity(number[, (Array<number|string>|number|string)]): any`
+`createIdentity(position: number[, path: (Array<number|string>|number|string)]): any`
 
 ```javascript
 // use a positive number to get the index of the arguments (zero-indexed)
