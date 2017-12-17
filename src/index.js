@@ -1,5 +1,8 @@
+// external dependencies
+import {parse} from 'pathington';
+
 // utils
-import {getNestedProperty, getPath} from './utils';
+import {getNestedProperty} from './utils';
 
 /**
  * @function createIdentity
@@ -17,7 +20,7 @@ export const createIdentity = (argIndex, path) => {
   return (...args) => {
     const value = args[argIndex < 0 ? args.length + argIndex : argIndex];
 
-    return shouldGetNestedValue ? getNestedProperty(getPath(path), value) : value;
+    return shouldGetNestedValue ? getNestedProperty(parse(path), value) : value;
   };
 };
 
