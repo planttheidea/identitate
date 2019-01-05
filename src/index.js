@@ -17,8 +17,9 @@ import {getNestedProperty} from './utils';
 export const createIdentity = (argIndex, path) => {
   const shouldGetNestedValue = path !== void 0;
 
-  return (...args) => {
-    const value = args[argIndex < 0 ? args.length + argIndex : argIndex];
+  return function() {
+    // eslint-disable-next-line prefer-rest-params
+    const value = arguments[argIndex < 0 ? arguments.length + argIndex : argIndex];
 
     return shouldGetNestedValue ? getNestedProperty(parse(path), value) : value;
   };
