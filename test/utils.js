@@ -7,7 +7,7 @@ import * as utils from 'src/utils';
 test('if getNestedProperty will return the value if the path only has one key left and the object exists', (t) => {
   const path = ['path'];
   const object = {
-    [path[0]]: 'value'
+    [path[0]]: 'value',
   };
 
   const result = utils.getNestedProperty([...path], object);
@@ -28,8 +28,8 @@ test('if getNestedProperty will return the value if the path has more than one k
   const path = ['path', 'deeper'];
   const object = {
     [path[0]]: {
-      [path[1]]: 'value'
-    }
+      [path[1]]: 'value',
+    },
   };
 
   const result = utils.getNestedProperty([...path], object);
@@ -49,7 +49,7 @@ test('if getNestedProperty will return the value if the path has more than one k
 test('if getNestedProperty will return the value if the path has more than one key left but the nested object does not exist', (t) => {
   const path = ['path', 'deeper'];
   const object = {
-    [path[0]]: null
+    [path[0]]: null,
   };
 
   const result = utils.getNestedProperty([...path], object);
@@ -61,8 +61,8 @@ test('if getNestedProperty will return the value if the path has more than one k
   const path = ['path', 'deeper'];
   const object = {
     [path[0]]: {
-      foo: 'bar'
-    }
+      foo: 'bar',
+    },
   };
 
   const result = utils.getNestedProperty([...path], object);

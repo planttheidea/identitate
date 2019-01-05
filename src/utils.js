@@ -10,10 +10,10 @@
  */
 export const getNestedProperty = (path, object) => {
   if (path.length === 1) {
-    return object ? object[path[0]] : undefined;
+    return object ? object[path[0]] : void 0;
   }
 
   const property = path.shift();
 
-  return object && object.hasOwnProperty(property) ? getNestedProperty(path, object[property]) : undefined;
+  return object && object.hasOwnProperty(property) ? getNestedProperty(path, object[property]) : void 0;
 };
