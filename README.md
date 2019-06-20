@@ -5,7 +5,7 @@ A tiny custom identity function creator for composable softwares.
 ## Table of contents
 
 * [Usage](#usage)
-* [Pre-build methods](#pre-build-methods)
+* [Pre-built methods](#pre-built-methods)
   * [identity](#identity)
   * [identitySecond](#identitysecond)
   * [identityLast](#identitylast)
@@ -100,7 +100,7 @@ const identityFourth = createIdentity(3);
 console.log(identityLast('first', 'second', 'third', 'fourth', 'fifth')); // 'fourth'
 
 // use a negative number to get the index of the arguments relative to the last
-const identityThirdLast = createidentity(-3);
+const identityThirdLast = createIdentity(-3);
 
 console.log(identityLast('first', 'second', 'third', 'fourth', 'fifth')); // 'third'
 
