@@ -81,8 +81,8 @@ console.log(identityLast('first', 'second', 'third')); // 'third'
 _returns second-to-last argument passed to it, regardless of total number of arguments_
 
 ```javascript
-console.log(identityLast('first', 'second', 'third', 'fourth', 'fifth')); // 'fourth'
-console.log(identityLast('first', 'second', 'third')); // 'second'
+console.log(identitySecondLast('first', 'second', 'third', 'fourth', 'fifth')); // 'fourth'
+console.log(identitySecondLast('first', 'second', 'third')); // 'second'
 ```
 
 ## Custom methods
