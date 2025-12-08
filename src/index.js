@@ -1,8 +1,7 @@
-// external dependencies
-import {parse} from 'pathington';
+import { parse } from 'pathington';
 
 // utils
-import {getNestedProperty} from './utils';
+import { getNestedProperty } from './utils';
 
 /**
  * @function createIdentity
@@ -17,8 +16,7 @@ import {getNestedProperty} from './utils';
 export const createIdentity = (argIndex, path) => {
   const shouldGetNestedValue = path !== void 0;
 
-  return function() {
-    // eslint-disable-next-line prefer-rest-params
+  return function () {
     const value = arguments[argIndex < 0 ? arguments.length + argIndex : argIndex];
 
     return shouldGetNestedValue ? getNestedProperty(parse(path), value) : value;

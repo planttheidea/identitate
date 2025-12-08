@@ -49,7 +49,7 @@ test('if createIdentity will get the nested value requested when there is a path
 
   const identityFn = index.createIdentity(argIndex, path);
 
-  const args = [{deeply: ['ignored', {nested: 'value'}]}, {other: 'parameter'}];
+  const args = [{ deeply: ['ignored', { nested: 'value' }] }, { other: 'parameter' }];
 
   const result = identityFn(...args);
 
