@@ -28,7 +28,7 @@ type PickDeepInternal<U, P extends unknown[]> = unknown extends U
         ? Next extends number
           ? PickDeepInternal<PickArray<U, Next>, Rest>
           : NoMatch
-        : U
+        : NoMatch
     : U;
 
 export type PickDeepInternalNormalized<U, P> =
@@ -47,10 +47,10 @@ export type PickDeep<
   Result = PickDeepInternalNormalized<U, ParsePath<P>>,
 > = NoMatch extends Result ? undefined : UnknownMatch extends Result ? any : Result;
 
-export type Entry<A extends unknown[], I extends number> = A extends [infer _Next, ...infer Rest]
+export type MatchingArg<A extends unknown[], I extends number> = A extends [infer _Next, ...infer Rest]
   ? `${I}` extends `-${number}`
     ? `-${TupleLength<Rest>}` extends `${I}`
       ? Rest[0]
-      : Entry<Rest, I>
+      : MatchingArg<Rest, I>
     : A[I]
   : undefined;
