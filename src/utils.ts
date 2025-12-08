@@ -1,5 +1,6 @@
-import type { PickDeep } from 'internalTypes.js';
 import type { Path } from 'pathington';
+import type { PickDeep } from './internalTypes.js';
+
 // eslint-disable-next-line @typescript-eslint/unbound-method
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 
