@@ -3574,6 +3574,7 @@ __metadata:
     eslint: "npm:^9.39.1"
     pathington: "npm:^2.1.0"
     prettier: "npm:^3.7.4"
+    release-it: "npm:^19.0.6"
     rollup: "npm:^4.53.3"
     typescript: "npm:^5.9.3"
     vite: "npm:^7.2.7"
