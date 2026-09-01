@@ -1,7 +1,6 @@
 import { createEslintConfig } from '@planttheidea/build-tools';
 
 export default createEslintConfig({
-  config: 'config',
   configs: [
     {
       rules: {
@@ -11,6 +10,6 @@ export default createEslintConfig({
     },
   ],
   development: 'dev',
-  react: true,
+  react: false,
   source: 'src',
 });

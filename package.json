@@ -1,29 +1,10 @@
 {
-  "author": "tony_quetano@planttheidea.com",
-  "ava": {
-    "babel": {
-      "testOptions": {
-        "plugins": [
-          "@babel/plugin-proposal-class-properties"
-        ],
-        "presets": [
-          "@babel/react"
-        ]
-      }
-    },
-    "failFast": true,
-    "files": [
-      "test/*.js"
-    ],
-    "require": [
-      "@babel/register"
-    ],
-    "sources": [
-      "src/*.js"
-    ],
-    "verbose": true
+  "author": {
+    "email": "tony.quetano@planttheidea.com",
+    "name": "Tony Quetano",
+    "url": "https://www.planttheidea.com/"
   },
-  "browser": "dist/umd/index.js",
+  "browser": "./dist/umd/index.js",
   "browserslist": [
     "defaults",
     "Explorer >= 9",
@@ -36,19 +17,19 @@
     "url": "https://github.com/planttheidea/identitate/issues"
   },
   "dependencies": {
-    "pathington": "^2.1.0"
+    "pathington": "^2.1.1"
   },
   "description": "Custom identity functions for composability",
   "devDependencies": {
-    "@planttheidea/build-tools": "^1.2.2",
-    "@vitest/coverage-v8": "^4.0.15",
-    "eslint": "^9.39.1",
-    "prettier": "^3.7.4",
-    "release-it": "^19.0.6",
-    "rollup": "^4.53.3",
-    "typescript": "^5.9.3",
-    "vite": "^7.2.7",
-    "vitest": "^4.0.15"
+    "@planttheidea/build-tools": "^2.0.8",
+    "@vitest/coverage-v8": "^4.1.11",
+    "eslint": "^9.39.5",
+    "prettier": "^3.9.6",
+    "release-it": "^21.0.2",
+    "rollup": "^4.63.1",
+    "typescript": "^6.0.3",
+    "vite": "^8.2.2",
+    "vitest": "^4.1.11"
   },
   "exports": {
     ".": {
@@ -68,7 +49,6 @@
   },
   "files": [
     "dist",
-    "CHANGELOG.md",
     "LICENSE",
     "README.md",
     "index.d.ts",
@@ -80,15 +60,18 @@
     "compose"
   ],
   "license": "MIT",
-  "main": "dist/cjs/index.cjs",
-  "module": "dist/es/index.mjs",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/es/index.mjs",
   "name": "identitate",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/planttheidea/identitate.git"
   },
   "scripts": {
-    "build": "npm run clean && npm run build:dist && npm run build:types",
+    "build": "npm run clean && npm run build:dist",
     "build:dist": "NODE_ENV=production rollup -c config/rollup.config.js",
     "build:minified": "NODE_ENV=production webpack --progress --colors --config=webpack/webpack.config.minified.js",
     "build:types": "pti fix-types -l dist",
