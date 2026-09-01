@@ -36,19 +36,19 @@
     "url": "https://github.com/planttheidea/identitate/issues"
   },
   "dependencies": {
-    "pathington": "^2.1.0"
+    "pathington": "^2.1.1"
   },
   "description": "Custom identity functions for composability",
   "devDependencies": {
-    "@planttheidea/build-tools": "^1.2.2",
-    "@vitest/coverage-v8": "^4.0.15",
-    "eslint": "^9.39.1",
-    "prettier": "^3.7.4",
-    "release-it": "^19.0.6",
-    "rollup": "^4.53.3",
-    "typescript": "^5.9.3",
-    "vite": "^7.2.7",
-    "vitest": "^4.0.15"
+    "@planttheidea/build-tools": "^2.0.8",
+    "@vitest/coverage-v8": "^4.1.11",
+    "eslint": "^9.39.5",
+    "prettier": "^3.9.6",
+    "release-it": "^21.0.2",
+    "rollup": "^4.63.1",
+    "typescript": "^6.0.3",
+    "vite": "^8.2.2",
+    "vitest": "^4.1.11"
   },
   "exports": {
     ".": {
